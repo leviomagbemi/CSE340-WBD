@@ -1,0 +1,17 @@
+{
+  "sqltools.connections": [
+    {
+      "pgOptions": {
+        "ssl": {
+          "rejectUnauthorized": true
+        }
+      },
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "driver": "PostgreSQL",
+      "name": "CSE Cars",
+      "connectString": "postgresql://cse340:N9doeAYQuuJLnWLJqK15BYnYs0sjHmhO@dpg-d5i9nrv5r7bs73bt6r0g-a.frankfurt-postgres.render.com/cse340lo"
+    }
+  ]
+}
