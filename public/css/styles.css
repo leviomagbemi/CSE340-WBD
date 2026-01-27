@@ -1,6 +1,6 @@
 /******* Theme ***************/
 :root {
-  --primary-color: #01B0D3;
+  --primary-color: #46A6D2;
   --secondary-color: #242332;
   --accent-color: #ECEDED;
   --color-white: #fff;
@@ -36,7 +36,7 @@ img {
   height: 100%;
 }
 
-section {
+main {
   padding: 2rem 1rem;
 }
 
@@ -46,29 +46,38 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  .siteName {
-    font-size: 32px;
-    font-family: 'Roboto Serif';
+}
 
-  }
+#top-header .siteName {
+  font-size: 32px;
+  font-family: 'Roboto Serif';
+  font-weight: 500;
+}
 
-  a {
-    color: var(--secondary-color);
-  }
+#top-header a {
+  color: var(--secondary-color);
 }
 
 /******* Navigation Styling ***************/
 nav {
   padding: 1rem;
   background-color: var(--secondary-color);
-  color: var(--color-white);
+}
 
-  ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-  }
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul a {
+  color: var(--color-white);
+}
+
+nav ul a:hover {
+  color: var(--secondary-color);
+  background-color: var(--color-white);
+  padding: 0.5rem;
 }
 
 /******* Main Styling ***************/
@@ -82,31 +91,32 @@ nav {
 .hero-section {
   position: relative;
   height: fit-content;
+}
 
-  img {
-    object-fit: contain;
-  }
+.hero-section img {
+  object-fit: contain;
+}
 
-  .carDetail {
-    position: absolute;
-    background-color: rgba(236, 237, 237, 0.4);
-    color: var(--primary-color);
-    max-width: 150px;
-    padding: 1rem;
-    top: 40%;
+.hero-section .carDetail {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--secondary-color);
+  font-weight: 500;
+  max-width: 150px;
+  padding: 1rem;
+  top: 40%;
+}
 
-    p {
-      margin-bottom: 1rem;
-    }
+.hero-section .carDetail p {
+  margin-bottom: 1rem;
+}
 
-    a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background-color: var(--primary-color);
-      color: var(--secondary-color);
-      font-weight: 700;
-    }
-  }
+.hero-section .carDetail a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: 700;
 }
 
 /******* Reviews & Upgrades *******/
@@ -114,42 +124,77 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
-  h2 {
-    margin-bottom: 1rem;
-  }
-
-  .reviews {
-    ul {
-      list-style: inside;
-    }
-  }
-
-  .upgrades-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-
-    .upgrade {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      > div {
-        min-width: 100px;
-        width: 100%;
-        text-align: center;
-        background-color: var(--primary-color);
-        border: 1px solid var(--secondary-color);
-      }
-
-      img{
-        width: 70px;
-      }
-    }
-  }
 }
 
+.reviews-upgrades-section h2 {
+  margin-bottom: 1rem;
+}
+
+.reviews-upgrades-section .reviews ul {
+  list-style: inside;
+}
+
+.reviews-upgrades-section .upgrades-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.reviews-upgrades-section .upgrades-container .upgrade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reviews-upgrades-section .upgrades-container .upgrade > div {
+  min-width: 100px;
+  width: 100%;
+  text-align: center;
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+}
+
+.reviews-upgrades-section .upgrades-container .upgrade img {
+  width: 70px;
+}
+
+/******* Inventory Styling *************/
+#inv-display {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  list-style: none;
+  padding: 1rem;
+}
+
+#inv-display a {
+  display: block;
+}
+
+#inv-display li {
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  text-align: center;
+}
+
+#inv-display li,
+#inv-display .namePrice {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#inv-display .namePrice {
+  padding-bottom: 1rem;
+}
+
+#inv-display img {
+  border-radius: 8px;
+}
+
+#inv-display hr {
+  border: 4px solid var(--secondary-color);
+}
 
 /******* Footer Styling ***************/
 footer {
@@ -169,19 +214,93 @@ footer {
     border: 8px solid var(--primary-color);
   }
 
-  .hero-section{
-    .carDetail {
-      top: 50%;
-      left: 100px;
-      transform: translateY(-50%);
-      max-width: 200px;
-    }
+  .hero-section .carDetail {
+    top: 50%;
+    left: 100px;
+    transform: translateY(-50%);
+    max-width: 200px;
   }
 
   .reviews-upgrades-section {
     flex-direction: row-reverse;
-    > div {
-      flex: 1;
-    }
+  }
+
+  .reviews-upgrades-section > div {
+    flex: 1;
+  }
+
+  #inv-display {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/******* Vehicle Detail Styling ***************/
+.vehicle-detail {
+  padding: 1rem 0;
+}
+
+#vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.vehicle-image {
+  flex: 1;
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.vehicle-info {
+  flex: 1;
+}
+
+.vehicle-info h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.vehicle-info p {
+  padding: 1rem;
+  margin-bottom: 0;
+}
+
+.vehicle-info .price {
+  background-color: var(--accent-color);
+}
+
+.vehicle-info .description {
+  background-color: var(--color-white);
+}
+
+.vehicle-info .color {
+  background-color: var(--accent-color);
+}
+
+.vehicle-info .miles {
+  background-color: var(--color-white);
+}
+
+.vehicle-info strong {
+  font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+  #vehicle-detail {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .vehicle-image {
+    max-width: 50%;
+  }
+
+  .vehicle-info {
+    max-width: 50%;
   }
 }

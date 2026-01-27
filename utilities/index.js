@@ -35,11 +35,11 @@ Util.buildClassificationGrid = async function(data){
       grid += '<li>'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-      + 'details"><img src="' + vehicle.inv_thumbnail 
+      + ' details"><img src="' + vehicle.inv_thumbnail 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
-      +' on CSE Motors" /></a>'
+      +' on CSE Motors"></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
+      grid += '<hr>'
       grid += '<h2>'
       grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
@@ -56,5 +56,46 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+/* **************************************
+* Build the vehicle detail view HTML
+* ************************************ */
+Util.buildVehicleDetailHTML = async function(vehicle) {
+  let detailHtml
+  if (vehicle) {
+    const formattedPrice = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(vehicle.inv_price)
+    
+    const formattedMiles = new Intl.NumberFormat('en-US').format(vehicle.inv_miles)
+    
+    detailHtml = '<div id="vehicle-detail">'
+    detailHtml += '<div class="vehicle-image">'
+    detailHtml += '<img src="' + vehicle.inv_image + '" alt="Image of ' 
+      + vehicle.inv_make + ' ' + vehicle.inv_model + '">'
+    detailHtml += '</div>'
+    detailHtml += '<div class="vehicle-info">'
+    detailHtml += '<h2>' + vehicle.inv_make + ' ' + vehicle.inv_model + ' Details</h2>'
+    detailHtml += '<p class="price"><strong>Price:</strong> ' + formattedPrice + '</p>'
+    detailHtml += '<p class="description"><strong>Description:</strong> ' + vehicle.inv_description + '</p>'
+    detailHtml += '<p class="color"><strong>Color:</strong> ' + vehicle.inv_color + '</p>'
+    detailHtml += '<p class="miles"><strong>Miles:</strong> ' + formattedMiles + '</p>'
+    detailHtml += '</div>'
+    detailHtml += '</div>'
+  } else {
+    detailHtml = '<p class="notice">Sorry, no vehicle details could be found.</p>'
+  }
+  return detailHtml
+}
+
+/* ****************************************
+ * Middleware For Handling Errors
+ * Wrap other function in this for 
+ * General Error Handling
+ **************************************** */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
 module.exports = Util
