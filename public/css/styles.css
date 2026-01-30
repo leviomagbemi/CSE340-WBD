@@ -304,3 +304,136 @@ footer {
     max-width: 50%;
   }
 }
+
+/******* Login Form Styling ***************/
+.login-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.login-form {
+  background-color: var(--secondary-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 3px solid var(--secondary-color);
+  outline: 3px solid var(--accent-color);
+}
+
+.login-form label {
+  display: block;
+  text-align: left;
+  color: var(--color-white);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.login-form input:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.login-btn {
+  background-color: var(--color-white);
+  color: var(--secondary-color);
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--color-white);
+}
+
+.signup-link {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+.signup-link a {
+  color: var(--secondary-color);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.signup-link a:hover {
+  color: var(--primary-color);
+}
+
+/******* Registration Form Styling ***************/
+.registration-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.registration-form {
+  background-color: var(--secondary-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 3px solid var(--secondary-color);
+  outline: 3px solid var(--accent-color);
+}
+
+.registration-form label {
+  display: block;
+  text-align: left;
+  color: var(--color-white);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.registration-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.registration-form input:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.password-requirements {
+  color: var(--color-white);
+  font-size: 0.875rem;
+  text-align: left;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.register-btn {
+  background-color: var(--primary-color);
+  color: var(--color-white);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.register-btn:hover {
+  background-color: var(--color-white);
+  color: var(--secondary-color);
+}
