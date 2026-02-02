@@ -437,3 +437,110 @@ footer {
   background-color: var(--color-white);
   color: var(--secondary-color);
 }
+
+/******* Management View Styling ***************/
+.management-links {
+  list-style: none;
+  padding: 1rem 0;
+}
+
+.management-links li {
+  margin-bottom: 1rem;
+}
+
+.management-links a {
+  color: var(--secondary-color);
+  text-decoration: underline;
+  font-size: 1.1rem;
+}
+
+.management-links a:hover {
+  color: var(--primary-color);
+}
+
+/******* Inventory Form Styling ***************/
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.form-content {
+  background-color: var(--primary-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.form-notice {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.input-hint {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-content label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  margin-top: 1rem;
+}
+
+.form-content label:first-of-type {
+  margin-top: 0;
+}
+
+.form-content input,
+.form-content select,
+.form-content textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-content input:focus,
+.form-content select:focus,
+.form-content textarea:focus {
+  outline: 2px solid var(--secondary-color);
+}
+
+.form-content textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-btn {
+  background-color: var(--color-white);
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.form-btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--color-white);
+}
+
+/******* Notice/Flash Message Styling ***************/
+.notice {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  list-style: inside;
+}
+
+.notice li {
+  margin-bottom: 0.25rem;
+}
