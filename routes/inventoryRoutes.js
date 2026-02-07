@@ -36,6 +36,26 @@ router.post(
   utilities.handleErrors(invController.processAddInventory)
 )
 
+// Route to get inventory items by classification_id (JSON response)
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+// Route to build edit inventory view
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView))
+
+// Route to process inventory update
+router.post(
+  "/update",
+  invValidate.inventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+)
+
+// Route to build delete confirmation view
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView))
+
+// Route to process inventory delete
+router.post("/delete", utilities.handleErrors(invController.deleteItem))
+
 // Route to trigger intentional 500 error
 router.get("/trigger-error", (req, res, next) => {
   throw new Error("Intentional 500 error for testing purposes")

@@ -15,12 +15,12 @@
     <% } %>
 
       <div class="form-container">
-        <form id="addInventoryForm" action="/inv/add-inventory" method="post">
+        <form id="updateForm" action="/inv/update" method="post">
           <div class="form-content">
             <p class="form-notice"><em>All fields are required.</em></p>
 
             <label for="classificationList">Classification</label>
-            <%- classificationList %>
+            <%- classificationSelect %>
 
               <label for="inv_make">Make</label>
               <input type="text" id="inv_make" name="inv_make" required minlength="3" placeholder="Min of 3 characters"
@@ -58,7 +58,11 @@
               <input type="text" id="inv_color" name="inv_color" required
                 value="<%= locals.inv_color ? locals.inv_color : '' %>">
 
-              <button type="submit" class="form-btn">Add Vehicle</button>
+              <input type="hidden" name="inv_id" value="<%= locals.inv_id %>">
+
+              <button type="submit" class="form-btn" disabled>Update Vehicle</button>
           </div>
         </form>
       </div>
+
+      <script src="/js/inv-update.js"></script>

@@ -544,3 +544,78 @@ footer {
 .notice li {
   margin-bottom: 0.25rem;
 }
+
+/******* Inventory Management Table Styling ***************/
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#inventoryDisplay thead {
+  background-color: var(--secondary-color);
+  color: var(--color-white);
+}
+
+#inventoryDisplay thead tr th,
+#inventoryDisplay thead tr td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+#inventoryDisplay tbody tr {
+  border-bottom: 1px solid var(--accent-color);
+}
+
+#inventoryDisplay tbody tr:hover {
+  background-color: var(--accent-color);
+}
+
+#inventoryDisplay tbody td {
+  padding: 0.75rem 1rem;
+}
+
+#inventoryDisplay tbody td a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#inventoryDisplay tbody td a:hover {
+  background-color: var(--primary-color);
+  color: var(--color-white);
+}
+
+/******* Classification Select Styling ***************/
+#classificationList {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid var(--secondary-color);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  min-width: 200px;
+  cursor: pointer;
+}
+
+#classificationList:focus {
+  outline: 2px solid var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/******* Noscript Styling ***************/
+noscript {
+  display: block;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+  text-align: center;
+}
