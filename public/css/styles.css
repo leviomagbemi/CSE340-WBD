@@ -67,7 +67,9 @@ nav {
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
 }
 
 nav ul a {
@@ -618,4 +620,55 @@ noscript {
   margin-top: 1rem;
   border-radius: 4px;
   text-align: center;
+}
+
+/******* Account Management View Styling ***************/
+.account-management {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.account-management h2 {
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+}
+
+.account-management h3 {
+  color: var(--secondary-color);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--accent-color);
+}
+
+.account-management p {
+  margin-bottom: 1rem;
+}
+
+.account-management a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.account-management a:hover {
+  color: var(--secondary-color);
+}
+
+/******* Header Tools (Login/Logout Links) ***************/
+#tools {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+#tools a {
+  padding: 0.25rem 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+#tools a:hover {
+  background-color: var(--accent-color);
+  border-radius: 4px;
 }

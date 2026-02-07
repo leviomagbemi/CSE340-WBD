@@ -1,0 +1,56 @@
+<h1>
+  <%= title %>
+</h1>
+
+<%- messages() %>
+
+  <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error=> { %>
+        <li>
+          <%= error.msg %>
+        </li>
+        <% }) %>
+    </ul>
+    <% } %>
+
+      <div class="form-container">
+        <h2>Update Account Information</h2>
+        <form id="updateAccountForm" action="/account/update" method="post">
+          <div class="form-content">
+            <label for="account_firstname">First Name</label>
+            <input type="text" id="account_firstname" name="account_firstname" required minlength="1"
+              value="<%= locals.account_firstname ? locals.account_firstname : '' %>" pattern="^[A-Za-z]+$">
+
+            <label for="account_lastname">Last Name</label>
+            <input type="text" id="account_lastname" name="account_lastname" required minlength="2"
+              value="<%= locals.account_lastname ? locals.account_lastname : '' %>">
+
+            <label for="account_email">Email</label>
+            <input type="email" id="account_email" name="account_email" required
+              value="<%= locals.account_email ? locals.account_email : '' %>">
+
+            <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+
+            <button type="submit" class="form-btn">Update Account</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-container">
+        <h2>Change Password</h2>
+        <p class="form-notice"><em>Enter a new password to change your current password. Password requirements: Minimum
+            12 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.</em></p>
+        <form id="changePasswordForm" action="/account/update/password" method="post">
+          <div class="form-content">
+            <label for="account_password">New Password</label>
+            <input type="password" id="account_password" name="account_password" required minlength="12"
+              pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+              title="Password must be at least 12 characters with 1 uppercase, 1 lowercase, 1 number, and 1 special character">
+
+            <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+
+            <button type="submit" class="form-btn">Change Password</button>
+          </div>
+        </form>
+      </div>
