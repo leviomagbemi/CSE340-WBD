@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
+const reviewModel = require("../models/review-model")
 
 const invCont = {}
 
@@ -31,23 +32,26 @@ invCont.buildByClassificationId = async function (req, res, next) {
  *  Build vehicle detail view by inventory id
  * ************************** */
 invCont.buildByInventoryId = async function (req, res, next) {
-  const inv_id = req.params.invId
-  const vehicle = await invModel.getInventoryById(inv_id)
-  
-  // Handle invalid inventory ID
+  const invId = req.params.invId
+  const vehicle = await invModel.getInventoryById(invId)
   if (!vehicle) {
     const error = new Error("Vehicle not found")
     error.status = 404
     return next(error)
   }
-  
   const vehicleHtml = await utilities.buildVehicleDetailHTML(vehicle)
+  const vehicleTitle = `${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}`
   let nav = await utilities.getNav()
-  const vehicleTitle = vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model
+  
+  const reviews = await reviewModel.getReviewsByInvId(invId)
+
   res.render("./inventory/detail", {
     title: vehicleTitle,
     nav,
     vehicleHtml,
+    reviews,
+    errors: null,
+    inv_id: vehicle.inv_id,
   })
 }
 

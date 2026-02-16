@@ -547,6 +547,17 @@ footer {
   margin-bottom: 0.25rem;
 }
 
+.notice.success, .success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  list-style: inside;
+  border: 1px solid #c3e6cb;
+}
+
 /******* Inventory Management Table Styling ***************/
 #inventoryDisplay {
   width: 100%;
@@ -668,7 +679,75 @@ noscript {
   transition: background-color 0.3s ease;
 }
 
-#tools a:hover {
-  background-color: var(--accent-color);
+
+/******* Reviews Section Styling ***************/
+.reviews-section {
+  padding: 2rem 1rem;
+  border-top: 2px solid var(--accent-color);
+  margin-top: 2rem;
+}
+
+.reviews-section h2,
+.reviews-section h3 {
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.review-card {
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  background-color: var(--color-white);
+}
+
+.review-rating {
+  margin-bottom: 0.5rem;
+}
+
+.star {
+  font-size: 1.25rem;
+  color: #ccc;
+}
+
+.star.filled {
+  color: #f4a400;
+}
+
+.review-text {
+  margin-bottom: 0.5rem;
+}
+
+.review-author {
+  font-style: italic;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.review-form {
+  max-width: 500px;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.review-form select,
+.review-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--secondary-color);
   border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.review-form select:focus,
+.review-form textarea:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.review-form label {
+  font-weight: 500;
+  margin-top: 0.5rem;
 }

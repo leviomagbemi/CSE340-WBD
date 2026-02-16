@@ -1,0 +1,50 @@
+<h1>
+  <%= title %>
+</h1>
+
+<%- messages() %>
+
+  <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(function(error) { %>
+        <li>
+          <%= error.msg %>
+        </li>
+        <% }) %>
+    </ul>
+    <% } %>
+
+      <div class="account-management">
+        <h2>My Reviews</h2>
+
+        <% if (reviews && reviews.length> 0) { %>
+          <% reviews.forEach(function(review) { %>
+            <div class="review-card">
+              <h3>
+                <a href="/inv/detail/<%= review.inv_id %>">
+                  <%= review.inv_year %>
+                    <%= review.inv_make %>
+                      <%= review.inv_model %>
+                </a>
+              </h3>
+              <p class="review-rating">
+                <% for(let i=1; i <=5; i++) { %>
+                  <span class="star <%= i <= review.review_rating ? 'filled' : '' %>">&#9733;</span>
+                  <% } %>
+              </p>
+              <p>
+                <%= review.review_text %>
+              </p>
+              <p><small>Posted: <%= new Date(review.review_date).toLocaleDateString() %></small></p>
+              <form action="/review/delete" method="post">
+                <input type="hidden" name="review_id" value="<%= review.review_id %>">
+                <button type="submit" class="form-btn">Delete Review</button>
+              </form>
+            </div>
+            <% }) %>
+              <% } else { %>
+                <p>You have not written any reviews yet. <a href="/">Browse vehicles</a> to get started.</p>
+                <% } %>
+
+                  <p><a href="/account/">&#8592; Back to Account</a></p>
+      </div>

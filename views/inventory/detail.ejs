@@ -1,8 +1,74 @@
 <% if (title) { %>
-<h1><%= title %></h1>
-<section class="vehicle-detail">
-  <%- vehicleHtml %>
-</section>
-<% } else {
-  res.redirect('/')
-} %>
+  <h1>
+    <%= title %>
+  </h1>
+  <section class="vehicle-detail">
+    <%- vehicleHtml %>
+  </section>
+
+  <section class="reviews-section">
+    <h2>Customer Reviews</h2>
+
+    <% if (locals.reviews && locals.reviews.length> 0) { %>
+      <% reviews.forEach(function(review) { %>
+        <div class="review-card">
+          <p class="review-rating">
+            <% for(let i=1; i <=5; i++) { %>
+              <span class="star <%= i <= review.review_rating ? 'filled' : '' %>">&#9733;</span>
+              <% } %>
+          </p>
+          <p class="review-text">
+            <%= review.review_text %>
+          </p>
+          <p class="review-author">
+            &mdash; <%= review.account_firstname %>
+              <%= review.account_lastname[0] %>.,
+                <%= new Date(review.review_date).toLocaleDateString() %>
+          </p>
+        </div>
+        <% }) %>
+          <% } else { %>
+            <p>No reviews yet. Be the first to leave one!</p>
+            <% } %>
+
+              <% if (locals.loggedin && locals.accountData.account_type==='Client' ) { %>
+                <h3>Leave a Review</h3>
+
+                <%- messages() %>
+
+                  <% if (errors) { %>
+                    <ul class="notice">
+                      <% errors.array().forEach(function(error) { %>
+                        <li>
+                          <%= error.msg %>
+                        </li>
+                        <% }) %>
+                    </ul>
+                    <% } %>
+
+                      <form action="/review/add" method="post" class="review-form">
+                        <label for="review_rating">Your Rating</label>
+                        <select id="review_rating" name="review_rating" required>
+                          <option value="">Select a rating</option>
+                          <% for(let i=5; i>= 1; i--) { %>
+                            <option value="<%= i %>" <%=locals.review_rating==i ? 'selected' : '' %>><%= i %> Star<%= i>
+                                  1 ? 's' : '' %></option>
+                            <% } %>
+                        </select>
+
+                        <label for="review_text">Your Review</label>
+                        <textarea id="review_text" name="review_text" required minlength="10"
+                          rows="4"><%= locals.review_text ? locals.review_text : '' %></textarea>
+
+                        <input type="hidden" name="inv_id" value="<%= locals.inv_id %>">
+                        <button type="submit" class="form-btn">Submit Review</button>
+                      </form>
+
+                      <% } else if (locals.loggedin && locals.accountData.account_type !=='Client' ) { %>
+                        <p><em>Only Client accounts can submit reviews.</em></p>
+                        <% } else { %>
+                          <p><a href="/account/login">Log in</a> to leave a review.</p>
+                          <% } %>
+
+  </section>
+  <% } else { res.redirect('/') } %>
